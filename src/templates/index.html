@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flip a Coin</title>
+    <link href="{{ url_for('static', path='/img/favicon.ico') }}" rel="icon" type="image/x-icon"">
+
+    <link href="{{ url_for('static', path='/css/styles.css') }}" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="stats">
+            <p id="heads-count">Face : {{ heads_count }}</p>
+            <p id="tails-count">Pile : {{ tails_count }}</p>
+            <p id="secret-message"></p>
+        </div>
+        <div class="coin" id="coin">
+            <div class="heads">
+                <img src="{{ url_for('static', path='/img/heads.svg') }}" alt="">
+            </div>
+            <div class="tails">
+                <img src="{{ url_for('static', path='/img/tails.svg') }}" alt="">
+            </div>
+        </div>
+        <div class="buttons">
+            <button id="flip-button">Tourner</button>
+            <button id="reset-button">Remise à zéro</button>
+        </div>
+    </div>
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html>
