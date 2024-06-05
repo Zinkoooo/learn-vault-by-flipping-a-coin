@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Release.Name }}
+  name: {{ .Release.Name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: {{ .Release.Name }}
+        image: {{ .Values.image }}
+        ports:
+        - containerPort: {{ default 80 .Values.containerPort }}
+        {{- if .Values.envVars }}
+        env:
+          {{- range .Values.envVars }}
+          - name: {{ .name | quote  }}
+            value: {{ .value | quote }}
+          {{- end }}
+        {{- end }}
+        startupProbe:
+          tcpSocket:
+            port: {{ default 80 .Values.containerPort }}
+          initialDelaySeconds: 3
+          periodSeconds: 5
+        livenessProbe:
+          httpGet:
+            scheme: HTTP
+            path: /livez
+            port: {{ default 80 .Values.containerPort }}
+          periodSeconds: 10
+          

@@ -1,0 +1,18 @@
+image: tanguynicolas/flip-a-coin
+
+envVars:
+  - name: DB_HOSTNAME
+    value: "postgresql"  # k get service -n demo
+  - name: DB_USERNAME
+    value: "user"        # manifests/postgresql/values.yaml
+  - name: DB_PASSWORD
+    value: "paSSw0rd"    # manifests/postgresql/values.yaml
+  - name: DB_DATABASE
+    value: "flip_a_coin" # manifests/postgresql/values.yaml
+
+  - name: SECRET_VALUE
+    value: "wow_incroyable"
+
+service:
+  type: NodePort
+  nodePort: 30001

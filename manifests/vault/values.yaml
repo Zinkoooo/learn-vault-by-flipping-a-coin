@@ -1,0 +1,16 @@
+---
+# GLOBAL
+
+injector:
+  enabled: false
+# secrets-store-csi-driver-provider-vault
+csi:
+  enabled: true
+
+ui:
+  enabled: true
+
+server:
+  service:
+    type: NodePort
+    nodePort: 30000

@@ -86,7 +86,7 @@ def increment_heads(db: Session = Depends(get_db)):
     db.refresh(score)
     return score.heads
 
-@app.delete("/reset")
+@app.post("/reset")
 def reset_score(db: Session = Depends(get_db)):
     score = db.query(models.Score).first()
     if score is None:
@@ -100,4 +100,4 @@ def reset_score(db: Session = Depends(get_db)):
 
 @app.get("/secret")
 def display_secret(db: Session = Depends(get_db)):
-    return general_settings.secret
+    return general_settings.secret_value
