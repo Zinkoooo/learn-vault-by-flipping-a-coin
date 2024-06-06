@@ -1,6 +1,4 @@
 ---
 auth:
   postgresPassword: postgres  # user => postgres
-  username: user
-  password: paSSw0rd          # user => auth.username
   database: flip_a_coin

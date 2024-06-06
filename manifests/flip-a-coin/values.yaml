@@ -4,9 +4,9 @@ envVars:
   - name: DB_HOSTNAME
     value: "postgresql"  # k get service -n demo
   - name: DB_USERNAME
-    value: "user"        # manifests/postgresql/values.yaml
+    value: "postgres"    # default
   - name: DB_PASSWORD
-    value: "paSSw0rd"    # manifests/postgresql/values.yaml
+    value: "postgres"    # manifests/postgresql/values.yaml
   - name: DB_DATABASE
     value: "flip_a_coin" # manifests/postgresql/values.yaml
 
